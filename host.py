@@ -5,13 +5,13 @@ import threading
 HOST = "192.168.15.120" #socket.gethostbyname(socket.gethostname())
 PORT = 5000
 
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.bind((HOST, PORT))
-client.listen()
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind((HOST, PORT))
+server.listen()
 
 CLIENTES = []
 while True:
-    conn, addr = client.accept()
+    conn, addr = server.accept()
     print('Connected by', addr)
     conn.send(str.encode("CONEXÃO SUCEDIDA", "UTF-8"))
     
